@@ -1,0 +1,170 @@
+
+<!DOCTYPE html>
+{% load static %}
+
+<html lang="en">
+    <head> <style type="text/css" media="screen">
+        form {
+    list-style-type:none;
+    text-align: left;
+    font-size: 25px;
+    color:black;
+   padding:10px;
+   width:280px;
+   margin: 0 auto 
+}
+input[type=text] {
+	margin-top: 10px;
+    margin-bottom: 10px;
+    width: 100%;
+    padding: 12px 20px;
+    margin: 8px 0;
+    box-sizing: border-box;
+
+}
+input[type=file] {
+	margin-top: 10px;
+    margin-bottom: 10px;
+    width: 100%;
+    padding: 12px 20px;
+    margin: 8px 0;
+    box-sizing: border-box;
+
+}
+
+input[type=password] {
+    width: 100%;
+    padding: 12px 20px;
+    margin: 8px 0;
+    box-sizing: border-box;
+    color :black;
+}
+input[type=button], input[type=submit], input[type=reset] {
+    background-color: #046C87;
+    border: none;
+    color: white;
+    padding: 16px 32px;
+    text-decoration: none;
+    margin: 4px 2px;
+    cursor: pointer;
+}
+
+        </style>
+        <link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
+  <link rel="stylesheet" href="/resources/demos/style.css">
+  <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
+  <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+  <script>
+  $( function() {
+    $( "#id_pub_date" ).datepicker();
+  } );
+  </script>
+            <title>Inscription</title>
+            
+            <!-- Google fonts -->
+            <link href='http://fonts.googleapis.com/css?family=Roboto:400,300,700 ' rel='stylesheet' type='text/css'>
+                
+                <!-- font awesome -->
+                <link href="//maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css" rel="stylesheet">
+                    
+                    <!-- bootstrap -->
+                    <link rel="stylesheet" href="{% static 'assets/bootstrap/css/bootstrap.min.css' %}" />
+                    
+                    <!-- animate.css -->
+                    <link rel="stylesheet" href="{% static 'assets/animate/animate.css' %}" />
+                    <link rel="stylesheet" href="{% static 'assets/animate/set.css' %}" />
+                    
+                    <link rel="stylesheet" href="{% static 'assets/style.css' %}">
+                        
+                        </head>
+    
+    <body>
+        <div class="topbar animated fadeInLeftBig"></div>
+        
+        <!-- Header Starts -->
+        <div class="navbar-wrapper">
+            <div class="container">
+                
+                <div class="navbar navbar-default navbar-fixed-top" role="navigation" id="top-nav">
+                    <div class="container">
+                        <div class="navbar-header">
+                            <!-- Logo Starts -->
+                            <a class="navbar-brand" href="#home"><img id="logoponts" src="{% static 'images/ponts.png' %}" alt="logo"></a>
+                            <!-- #Logo Ends -->
+                            
+                            
+                            <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target=".navbar-collapse">
+                                <span class="sr-only">Toggle navigation</span>
+                                <span class="icon-bar"></span>
+                                <span class="icon-bar"></span>
+                                <span class="icon-bar"></span>
+                            </button>
+                            
+                        </div>
+                        
+                        
+                        <!-- Nav Starts -->
+                        <div class="navbar-collapse  collapse">
+                            <ul class="nav navbar-nav navbar-right scroll">
+                                <li class="active"><a>{% spaceless %}
+                                        {% if request.user.first_name or request.user.last_name %}
+                                            {{ request.user.first_name }} {{ request.user.last_name }}
+                                        {% else %}
+                                            {{ request.user }}
+                                        {% endif %}
+                                {% endspaceless %}</a></li>
+
+                                        {% if request.user.username %}
+                                            <li class="active"><a href="../logout">Logout</a></li>
+                                        {% else %}
+                                            <li class="active"><a href="../login">Login</a></li>
+                                        {% endif %}
+                                <li class="active"><a href="../homepage">Accueil</a></li>    
+                                <li class="active"><a href="../contact">Inscription</a></li>
+                                <li class="active"><a href="http://www.enpc.fr">L'&Eacutecole des Ponts</a></li>  
+                                {% if request.user.username %}                              
+                                <li class="active"><a href="../profilepage">Page de Profil </a></li> 
+                                {% endif %}
+
+                                    </ul>
+                                    </div>
+                                    <!-- #Nav Ends -->
+                                    
+                                    </div>
+                                    </div>
+                                    
+                                    </div>
+                                    </div>
+                                    <!-- #Header Starts -->
+                                    
+                                    <div id="home">
+                                    <!-- Slider Starts -->
+                                    <div id="myCarousel" class="carousel slide banner-slider animated flipInX" data-ride="carousel">     
+                                    <div class="carousel-inner">
+                                    <!-- Item 1 -->
+                                    <div class="item active">
+                                    <img src="{% static 'images/back3.jpg' %}" alt="banner">          
+                                    <div class="carousel-caption">
+                                    <div class="caption-wrapper">
+                                    <div class="caption-info">
+                                    <!-- <img src="{% static 'images/ponts.png' %}" class="animated bounceInUp" alt="logo"> -->
+                                    <h1 class="animated bounceInLeft">Inscription</h1>
+                                    <p class="animated bounceInRight">Pas encore inscrit ? Créez votre compte dès maintenant !</p>
+                                    <form action="/insta/add_picture/" enctype="multipart/form-data" method="post">
+                                    {% csrf_token %}
+                                    {{ form.as_ul}}
+                                    <input type="submit" value="Submit" />
+                                    </form>
+                                    
+                                    </div>
+                                    </div>
+                                    </div>
+                                    </div>
+                                    </div>
+                                    
+                                    </div>
+                                    
+                                    </div>
+                                    
+                                    </body>
+                                    </html>

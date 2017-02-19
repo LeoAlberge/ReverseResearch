@@ -1,0 +1,12 @@
+body {
+    background-image:url("images/background.jpg");
+    background-repeat: no-repeat;
+    background-size: cover;
+    
+}
+
+ul{
+	font-size: 40px; /* Titres de 40 pixels */
+	font-family: "arial"
+
+}

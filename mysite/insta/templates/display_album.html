@@ -1,0 +1,46 @@
+<!-- for elem in list...dans le html dans template
+ 
+ dans le views render(... list:...")-->
+{% load static %}<head>
+<title>Album</title>
+<meta http-equiv='content-type' content='text/html; charset=iso-8859-1'/>
+<style>
+div.img {
+    margin: 5px;
+    border: 1px solid #ccc;
+    float: left;
+    width: 180px;
+}
+
+div.img:hover {
+    border: 1px solid #777;
+}
+
+div.img img {
+    width: 100%;
+    height: auto;
+}
+
+div.desc {
+    padding: 15px;
+    text-align: center;
+}
+</style>
+</head>
+<body>
+<ul>
+    {% for image in images %}
+
+            <div class="img">
+            <a href="http://127.0.0.1:8000/media/{{image.data}}">
+            <img src="http://127.0.0.1:8000/media/{{image.data}}" alt="Miniature" width="300" height="200"/>
+            </a>
+            <div class="desc">{{image.pub_date}} </div>
+
+            </div>
+            {% endfor %}
+  </ul>
+
+
+</body>
+</html>
